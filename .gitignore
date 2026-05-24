@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Build
+miniprogram_npm/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# WeChat DevTools
+project.private.config.json
+
+# Cloud function dependencies
+cloudfunctions/*/node_modules/

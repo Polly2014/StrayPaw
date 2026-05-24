@@ -1,0 +1,100 @@
+<!--pages/about/about.wxml - 关于我们-->
+<view class="container">
+  <!-- 头部 Banner -->
+  <view class="card hero-card">
+    <text class="hero-emoji" bindlongpress="goAdmin">🐾</text>
+    <text class="hero-title">流浪动物救助</text>
+    <text class="hero-subtitle">每一个生命都值得被温柔以待</text>
+  </view>
+
+  <!-- 我们的使命 -->
+  <view class="card section-card">
+    <text class="section-title">🎯 我们的使命</text>
+    <text class="section-content">我们是一群热爱动物的志愿者，致力于救助城市中的流浪动物。我们为它们提供医疗救治、临时寄养，并帮助它们找到温暖的新家。</text>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="card stats-card">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.rescued}}</text>
+      <text class="stat-label">累计救助</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.adopted}}</text>
+      <text class="stat-label">成功领养</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.volunteers}}</text>
+      <text class="stat-label">志愿者</text>
+    </view>
+  </view>
+
+  <!-- 联系方式 -->
+  <view class="card section-card">
+    <text class="section-title">📞 联系我们</text>
+    <view class="contact-list">
+      <view class="contact-item" bindtap="copyWechat">
+        <text class="contact-icon">💬</text>
+        <view class="contact-info">
+          <text class="contact-label">微信群</text>
+          <text class="contact-value">添加微信 {{contactWechat}} 邀请入群</text>
+        </view>
+        <text class="contact-action">复制</text>
+      </view>
+      <view class="contact-item" bindtap="makeCall">
+        <text class="contact-icon">📱</text>
+        <view class="contact-info">
+          <text class="contact-label">电话</text>
+          <text class="contact-value">{{contactPhone}}</text>
+        </view>
+        <text class="contact-action">拨打</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 如何帮助 -->
+  <view class="card section-card">
+    <text class="section-title">💛 如何帮助</text>
+    <view class="help-list">
+      <view class="help-item">
+        <text class="help-icon">🏠</text>
+        <view class="help-info">
+          <text class="help-title">领养代替购买</text>
+          <text class="help-desc">给流浪的它一个温暖的家</text>
+        </view>
+      </view>
+      <view class="help-item">
+        <text class="help-icon">🙋</text>
+        <view class="help-info">
+          <text class="help-title">成为志愿者</text>
+          <text class="help-desc">参与日常照料、运输、活动组织</text>
+        </view>
+      </view>
+      <view class="help-item">
+        <text class="help-icon">📢</text>
+        <view class="help-info">
+          <text class="help-title">转发扩散</text>
+          <text class="help-desc">让更多人看到它们的故事</text>
+        </view>
+      </view>
+      <view class="help-item">
+        <text class="help-icon">🍚</text>
+        <view class="help-info">
+          <text class="help-title">物资捐赠</text>
+          <text class="help-desc">猫粮狗粮、罐头、猫砂、药品</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer">
+    <text class="footer-text">Made with ❤️ by Polly</text>
+    <text class="footer-tech">Powered by WeChat Cloud</text>
+    <view class="footer-links">
+      <text class="footer-link" bindtap="goPrivacy">隐私保护指引</text>
+      <text class="footer-divider">|</text>
+      <text class="footer-link" bindtap="goAgreement">用户服务协议</text>
+    </view>
+  </view>
+</view>

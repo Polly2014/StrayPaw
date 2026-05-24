@@ -1,0 +1,87 @@
+<!--pages/index/index.wxml - 首页：动物列表-->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <icon type="search" size="16" color="#999" />
+    <input
+      class="search-input"
+      placeholder="搜索名字、品种..."
+      bindinput="onSearchInput"
+      value="{{searchText}}"
+    />
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-bar">
+    <view
+      class="filter-tag {{currentFilter === 'all' ? 'filter-tag-active' : ''}}"
+      bindtap="onFilter"
+      data-type="all"
+    >全部</view>
+    <view
+      class="filter-tag {{currentFilter === 'cat' ? 'filter-tag-active' : ''}}"
+      bindtap="onFilter"
+      data-type="cat"
+    >猫咪</view>
+    <view
+      class="filter-tag {{currentFilter === 'dog' ? 'filter-tag-active' : ''}}"
+      bindtap="onFilter"
+      data-type="dog"
+    >狗狗</view>
+    <view
+      class="filter-tag {{currentFilter === 'other' ? 'filter-tag-active' : ''}}"
+      bindtap="onFilter"
+      data-type="other"
+    >其他</view>
+  </view>
+
+  <!-- 动物卡片列表 -->
+  <view class="animal-list">
+    <block wx:for="{{filteredAnimals}}" wx:key="_id">
+      <view class="card animal-card" bindtap="goDetail" data-id="{{item._id}}">
+        <image
+          class="animal-photo"
+          src="{{item.photo || '/images/placeholder.png'}}"
+          mode="aspectFill"
+          lazy-load
+        />
+        <view class="animal-info">
+          <view class="animal-header">
+            <text class="animal-name">{{item.name}}</text>
+            <view class="tag tag-{{item.status}}">
+              {{item.status === 'available' ? '待领养' : item.status === 'pending' ? '申请中' : '已领养'}}
+            </view>
+          </view>
+          <view class="animal-meta">
+            <text class="meta-item">{{item.species === 'cat' ? '🐱' : item.species === 'dog' ? '🐶' : '🐰'}} {{item.breed}}</text>
+            <text class="meta-dot">·</text>
+            <text class="meta-item gender-text {{item.gender}}">{{item.gender === 'male' ? '男生' : '女生'}}</text>
+            <text class="meta-item">{{item.age}}</text>
+          </view>
+          <view class="animal-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+            <text class="personality-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{filteredAnimals.length === 0 && !loading}}">
+      <image class="empty-image" src="/images/empty-state.png" mode="aspectFit" />
+      <text class="empty-text">暂无符合条件的小动物</text>
+    </view>
+
+    <!-- 加载中 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+
+    <!-- 加载更多 -->
+    <view class="loading" wx:if="{{loadingMore}}">
+      <text>加载更多...</text>
+    </view>
+    <view class="loading" wx:if="{{!hasMore && filteredAnimals.length > 0 && !loading}}">
+      <text class="no-more-text">— 已经到底啦 —</text>
+    </view>
+  </view>
+</view>

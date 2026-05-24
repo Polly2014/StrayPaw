@@ -1,0 +1,184 @@
+/* pages/about/about.wxss */
+
+/* Hero */
+.hero-card {
+  padding: 60rpx 40rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #FF8C42, #FF6B35);
+  color: #fff;
+}
+
+.hero-emoji {
+  display: block;
+  font-size: 80rpx;
+  margin-bottom: 16rpx;
+}
+
+.hero-title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+}
+
+.hero-subtitle {
+  display: block;
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+/* 段落卡片 */
+.section-card {
+  padding: 28rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.section-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 统计 */
+.stats-card {
+  display: flex;
+  padding: 32rpx;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-number {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #FF8C42;
+}
+
+.stat-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+/* 联系方式 */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #FAFAFA;
+  border-radius: 12rpx;
+}
+
+.contact-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-label {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.contact-value {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.contact-action {
+  font-size: 24rpx;
+  color: #FF8C42;
+  font-weight: 500;
+}
+
+/* 如何帮助 */
+.help-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.help-item {
+  display: flex;
+  align-items: center;
+}
+
+.help-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.help-info {
+  flex: 1;
+}
+
+.help-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.help-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+/* 底部 */
+.footer {
+  text-align: center;
+  padding: 40rpx 0 60rpx;
+}
+
+.footer-text {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.footer-tech {
+  display: block;
+  font-size: 20rpx;
+  color: #ccc;
+  margin-top: 8rpx;
+}
+
+.footer-links {
+  margin-top: 16rpx;
+}
+
+.footer-link {
+  font-size: 22rpx;
+  color: #999;
+  text-decoration: underline;
+}
+
+.footer-divider {
+  font-size: 22rpx;
+  color: #ddd;
+  margin: 0 12rpx;
+}

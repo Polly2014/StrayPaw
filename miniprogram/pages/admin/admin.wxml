@@ -1,0 +1,89 @@
+<!--pages/admin/admin.wxml - 管理后台-->
+<view class="container" wx:if="{{isAdmin}}">
+  <!-- 顶部标签切换 -->
+  <view class="admin-tabs">
+    <view class="admin-tab {{currentTab === 'animals' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="animals">
+      <text>🐾 动物管理</text>
+      <text class="tab-count">{{animalTotal}}</text>
+    </view>
+    <view class="admin-tab {{currentTab === 'adoptions' ? 'tab-active' : ''}}" bindtap="switchTab" data-tab="adoptions">
+      <text>📋 领养申请</text>
+      <text class="tab-count tab-badge" wx:if="{{pendingCount > 0}}">{{pendingCount}}</text>
+    </view>
+  </view>
+
+  <!-- 动物管理列表 -->
+  <view wx:if="{{currentTab === 'animals'}}">
+    <view class="admin-action-bar">
+      <button class="btn-add" bindtap="addAnimal">+ 添加动物</button>
+    </view>
+
+    <view class="admin-list">
+      <view class="admin-item card" wx:for="{{animals}}" wx:key="_id">
+        <image class="admin-thumb" src="{{item.photo || '/images/placeholder.png'}}" mode="aspectFill" />
+        <view class="admin-item-info">
+          <view class="admin-item-header">
+            <text class="admin-item-name">{{item.name}}</text>
+            <view class="tag tag-{{item.status}}">
+              {{item.status === 'available' ? '待领养' : item.status === 'pending' ? '申请中' : '已领养'}}
+            </view>
+          </view>
+          <text class="admin-item-meta">{{item.species === 'cat' ? '🐱' : '🐶'}} {{item.breed}} · {{item.gender === 'male' ? '男' : '女'}}</text>
+        </view>
+        <view class="admin-item-actions">
+          <view class="action-btn action-edit" bindtap="editAnimal" data-id="{{item._id}}">编辑</view>
+          <view class="action-btn action-delete" bindtap="deleteAnimal" data-id="{{item._id}}" data-name="{{item.name}}">删除</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{animals.length === 0}}">
+      <text class="empty-text">暂无动物信息，点击上方按钮添加</text>
+    </view>
+  </view>
+
+  <!-- 领养申请列表 -->
+  <view wx:if="{{currentTab === 'adoptions'}}">
+    <!-- 筛选 -->
+    <view class="filter-bar">
+      <view class="filter-tag {{adoptionFilter === 'pending' ? 'filter-tag-active' : ''}}" bindtap="filterAdoptions" data-status="pending">待审核</view>
+      <view class="filter-tag {{adoptionFilter === 'approved' ? 'filter-tag-active' : ''}}" bindtap="filterAdoptions" data-status="approved">已通过</view>
+      <view class="filter-tag {{adoptionFilter === 'rejected' ? 'filter-tag-active' : ''}}" bindtap="filterAdoptions" data-status="rejected">已拒绝</view>
+      <view class="filter-tag {{adoptionFilter === '' ? 'filter-tag-active' : ''}}" bindtap="filterAdoptions" data-status="">全部</view>
+    </view>
+
+    <view class="admin-list">
+      <view class="admin-item card" wx:for="{{adoptions}}" wx:key="_id" bindtap="viewAdoption" data-index="{{index}}">
+        <view class="admin-item-info" style="flex:1">
+          <view class="admin-item-header">
+            <text class="admin-item-name">{{item.applicant.name}} → {{item.animalName}}</text>
+            <view class="tag tag-adoption-{{item.status}}">
+              {{item.status === 'pending' ? '待审核' : item.status === 'approved' ? '已通过' : '已拒绝'}}
+            </view>
+          </view>
+          <text class="admin-item-meta">📱 {{item.applicant.phone}} · {{item.applicant.housing}}</text>
+          <text class="admin-item-meta">💬 {{item.reason}}</text>
+        </view>
+        <view class="admin-item-actions" wx:if="{{item.status === 'pending'}}">
+          <view class="action-btn action-approve" catchtap="approveAdoption" data-id="{{item._id}}" data-name="{{item.applicant.name}}" data-animal="{{item.animalName}}">通过</view>
+          <view class="action-btn action-reject" catchtap="rejectAdoption" data-id="{{item._id}}" data-name="{{item.applicant.name}}">拒绝</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{adoptions.length === 0}}">
+      <text class="empty-text">暂无{{adoptionFilter === 'pending' ? '待审核的' : ''}}领养申请</text>
+    </view>
+  </view>
+</view>
+
+<!-- 非管理员 -->
+<view class="container" wx:if="{{!isAdmin && checked}}">
+  <view class="auth-card card">
+    <text class="auth-icon">🔒</text>
+    <text class="auth-title">无管理员权限</text>
+    <text class="auth-desc">您的 OpenID：</text>
+    <text class="auth-openid" bindtap="copyOpenid">{{openid}}</text>
+    <text class="auth-hint">请将此 OpenID 添加到 admins 集合中</text>
+  </view>
+</view>

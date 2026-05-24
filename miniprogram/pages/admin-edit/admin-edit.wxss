@@ -1,0 +1,222 @@
+/* pages/admin-edit/admin-edit.wxss */
+
+.form-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24rpx;
+}
+
+.form-section {
+  padding: 28rpx;
+}
+
+.section-label {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+/* 照片上传 */
+.photo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.photo-item {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.photo-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.photo-remove {
+  position: absolute;
+  top: -12rpx;
+  right: -12rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: #ff4444;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 28rpx;
+}
+
+.photo-add {
+  width: 180rpx;
+  height: 180rpx;
+  border: 2rpx dashed #ccc;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-add-icon {
+  font-size: 48rpx;
+  color: #ccc;
+}
+
+.photo-add-text {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.form-hint {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 12rpx;
+}
+
+/* 表单项 */
+.form-item {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+
+.form-input {
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+  background: #fafafa;
+}
+
+.picker-input {
+  color: #333;
+}
+
+.form-textarea {
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  font-size: 28rpx;
+  width: 100%;
+  height: 160rpx;
+  background: #fafafa;
+  box-sizing: border-box;
+}
+
+/* 单选按钮组 */
+.radio-group {
+  display: flex;
+  gap: 16rpx;
+  flex-wrap: wrap;
+}
+
+.radio-btn {
+  padding: 12rpx 28rpx;
+  border: 2rpx solid #eee;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #fafafa;
+}
+
+.radio-active {
+  background: #FFF3E0;
+  border-color: #FF8C42;
+  color: #FF8C42;
+  font-weight: 500;
+}
+
+/* 标签选择器 */
+.tag-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.tag-option {
+  padding: 10rpx 24rpx;
+  border: 2rpx solid #eee;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.tag-selected {
+  background: #FF8C42;
+  border-color: #FF8C42;
+  color: #fff;
+}
+
+/* 医疗信息 */
+.medical-row {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.medical-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  padding: 12rpx 24rpx;
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+  min-width: 140rpx;
+}
+
+.toggle-active {
+  background: #E8F5E9;
+  border-color: #4CAF50;
+  color: #2E7D32;
+}
+
+.toggle-icon {
+  font-weight: 700;
+}
+
+.date-pick {
+  padding: 12rpx 20rpx;
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  background: #fafafa;
+}
+
+/* 提交栏 */
+.submit-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 32rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  background: #fff;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.btn-submit {
+  width: 100%;
+  font-size: 32rpx;
+  padding: 24rpx 0;
+}
+
+.bottom-spacer {
+  height: 140rpx;
+}

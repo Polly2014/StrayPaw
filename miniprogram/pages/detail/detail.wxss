@@ -1,0 +1,263 @@
+/* pages/detail/detail.wxss */
+
+.photo-swiper {
+  width: 100%;
+  height: 560rpx;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-icon {
+  font-size: 120rpx;
+}
+
+.placeholder-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 16rpx;
+}
+
+/* 信息卡片 */
+.info-card {
+  padding: 28rpx;
+  margin-top: -40rpx;
+  position: relative;
+  z-index: 1;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+
+.info-header {
+  margin-bottom: 24rpx;
+}
+
+.info-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.animal-name {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #333;
+}
+
+.animal-breed {
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 4rpx;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.info-item {
+  text-align: center;
+  background: #FAFAFA;
+  border-radius: 12rpx;
+  padding: 16rpx 8rpx;
+}
+
+.info-label {
+  display: block;
+  font-size: 22rpx;
+  color: #999;
+  margin-bottom: 4rpx;
+}
+
+.info-value {
+  display: block;
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.gender-icon {
+  font-weight: 500;
+}
+
+.gender-icon.male {
+  color: #1976D2;
+}
+
+.gender-icon.female {
+  color: #E91E63;
+}
+
+/* 性格标签 */
+.detail-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 20rpx;
+}
+
+/* 特殊情况标注 */
+.special-note {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  margin-top: 20rpx;
+  padding: 16rpx 20rpx;
+  background: #FFF8E1;
+  border-radius: 12rpx;
+  border-left: 6rpx solid #FFB300;
+}
+
+.special-note-icon {
+  font-size: 28rpx;
+  flex-shrink: 0;
+}
+
+.special-note-text {
+  font-size: 26rpx;
+  color: #F57F17;
+  font-weight: 500;
+}
+
+.personality-tag {
+  display: inline-block;
+  padding: 6rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+/* 医疗信息卡片 */
+.medical-grid {
+  display: flex;
+  gap: 16rpx;
+}
+
+.medical-item {
+  flex: 1;
+  text-align: center;
+  background: #FAFAFA;
+  border-radius: 12rpx;
+  padding: 20rpx 8rpx;
+}
+
+.medical-status {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.status-done {
+  background: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-no {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+.medical-label {
+  display: block;
+  font-size: 26rpx;
+  color: #333;
+  font-weight: 500;
+}
+
+.medical-date {
+  display: block;
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+/* 段落卡片 */
+.section-card {
+  padding: 28rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.section-content {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* 领养须知 */
+.adopt-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.rule-item {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 底部操作栏 */
+.bottom-spacer {
+  height: 140rpx;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 16rpx 24rpx;
+  padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
+  display: flex;
+  gap: 20rpx;
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
+  z-index: 100;
+}
+
+.btn-share {
+  flex: 1;
+  background: #F5F5F5;
+  color: #666;
+  border: none;
+  border-radius: 12rpx;
+  padding: 20rpx 0;
+  font-size: 28rpx;
+}
+
+.btn-share::after {
+  border: none;
+}
+
+.btn-adopt {
+  flex: 2;
+}

@@ -1,0 +1,12 @@
+// utils/format.wxs
+// WXS 模块：模板中直接调用的格式化函数
+
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  // "2026-01-15" → "2026.01.15"
+  return dateStr.replace(getRegExp('-', 'g'), '.')
+}
+
+module.exports = {
+  formatDate: formatDate
+}

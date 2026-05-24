@@ -1,0 +1,2 @@
+/* pages/privacy/privacy.wxss */
+@import '../agreement/agreement.wxss';

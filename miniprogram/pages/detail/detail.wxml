@@ -1,0 +1,142 @@
+<!--pages/detail/detail.wxml - 动物详情页-->
+<wxs src="../../utils/format.wxs" module="fmt" />
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper class="photo-swiper" indicator-dots="{{animal.photos && animal.photos.length > 1}}" circular autoplay>
+    <swiper-item wx:for="{{animal.photos}}" wx:key="*this">
+      <image class="photo-img" src="{{item}}" mode="aspectFill" bindtap="previewPhoto" data-url="{{item}}" />
+    </swiper-item>
+    <swiper-item wx:if="{{!animal.photos || animal.photos.length === 0}}">
+      <view class="photo-placeholder">
+        <text class="placeholder-icon">{{animal.species === 'cat' ? '🐱' : animal.species === 'dog' ? '🐶' : '🐰'}}</text>
+        <text class="placeholder-text">暂无照片</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 基本信息卡片 -->
+  <view class="card info-card">
+    <view class="info-header">
+      <view class="info-title-row">
+        <text class="animal-name">{{animal.name}}</text>
+        <view class="tag tag-{{animal.status}}">
+          {{animal.status === 'available' ? '待领养' : animal.status === 'pending' ? '申请中' : '已领养'}}
+        </view>
+      </view>
+      <text class="animal-breed">{{animal.breed}}</text>
+    </view>
+
+    <view class="info-grid">
+      <view class="info-item">
+        <text class="info-label">性别</text>
+        <text class="info-value gender-icon {{animal.gender}}">{{animal.gender === 'male' ? '男生' : '女生'}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">年龄</text>
+        <text class="info-value">{{animal.age}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">体重</text>
+        <text class="info-value">{{animal.weight || '未知'}}</text>
+      </view>
+    </view>
+
+    <!-- 体型数据 -->
+    <view class="info-grid" wx:if="{{animal.height || animal.neckCirc || animal.chestCirc}}">
+      <view class="info-item" wx:if="{{animal.height}}">
+        <text class="info-label">身高</text>
+        <text class="info-value">{{animal.height}}</text>
+      </view>
+      <view class="info-item" wx:if="{{animal.neckCirc}}">
+        <text class="info-label">颈围</text>
+        <text class="info-value">{{animal.neckCirc}}</text>
+      </view>
+      <view class="info-item" wx:if="{{animal.chestCirc}}">
+        <text class="info-label">胸围</text>
+        <text class="info-value">{{animal.chestCirc}}</text>
+      </view>
+    </view>
+
+    <!-- 特殊情况 -->
+    <view class="special-note" wx:if="{{animal.specialNote}}">
+      <text class="special-note-icon">⚠️</text>
+      <text class="special-note-text">{{animal.specialNote}}</text>
+    </view>
+
+    <!-- 性格标签 -->
+    <view class="detail-tags" wx:if="{{animal.tags && animal.tags.length > 0}}">
+      <text class="personality-tag" wx:for="{{animal.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
+    </view>
+  </view>
+
+  <!-- 🏥 医疗信息卡片 -->
+  <view class="card section-card">
+    <text class="section-title">🏥 医疗信息</text>
+    <view class="medical-grid">
+      <view class="medical-item">
+        <view class="medical-status {{animal.neutered ? 'status-done' : 'status-no'}}">
+          {{animal.neutered ? '✓' : '✗'}}
+        </view>
+        <text class="medical-label">绝育</text>
+        <text class="medical-date" wx:if="{{animal.neuteredDate}}">{{fmt.formatDate(animal.neuteredDate)}}</text>
+      </view>
+      <view class="medical-item">
+        <view class="medical-status {{animal.vaccinated ? 'status-done' : 'status-no'}}">
+          {{animal.vaccinated ? '✓' : '✗'}}
+        </view>
+        <text class="medical-label">疫苗</text>
+        <text class="medical-date" wx:if="{{animal.vaccinatedDate}}">{{fmt.formatDate(animal.vaccinatedDate)}}</text>
+      </view>
+      <view class="medical-item">
+        <view class="medical-status {{animal.dewormed ? 'status-done' : 'status-no'}}">
+          {{animal.dewormed ? '✓' : '✗'}}
+        </view>
+        <text class="medical-label">驱虫</text>
+        <text class="medical-date" wx:if="{{animal.dewormedDate}}">{{fmt.formatDate(animal.dewormedDate)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 性格描述 -->
+  <view class="card section-card">
+    <text class="section-title">🐾 性格特点</text>
+    <text class="section-content">{{animal.personality || animal.description}}</text>
+  </view>
+
+  <!-- 健康状况 -->
+  <view class="card section-card" wx:if="{{animal.healthNote}}">
+    <text class="section-title">💊 健康状况</text>
+    <text class="section-content">{{animal.healthNote}}</text>
+  </view>
+
+  <!-- 救助故事 -->
+  <view class="card section-card" wx:if="{{animal.rescueStory}}">
+    <text class="section-title">📖 救助故事</text>
+    <text class="section-content">{{animal.rescueStory}}</text>
+  </view>
+
+  <!-- 领养须知 -->
+  <view class="card section-card">
+    <text class="section-title">📋 领养须知</text>
+    <view class="adopt-rules">
+      <text class="rule-item">• 需年满18周岁，有稳定住所</text>
+      <text class="rule-item">• 家人同意且无过敏情况</text>
+      <text class="rule-item">• 承诺科学喂养、定期体检</text>
+      <text class="rule-item">• 接受领养后回访</text>
+      <text class="rule-item">• 不离不弃，不转赠不遗弃</text>
+    </view>
+  </view>
+
+  <!-- 底部占位 -->
+  <view class="bottom-spacer"></view>
+</view>
+
+<!-- 底部操作栏 -->
+<view class="bottom-bar" wx:if="{{animal.status === 'available'}}">
+  <button class="btn-share" open-type="share">
+    <text>分享</text>
+  </button>
+  <button class="btn-primary btn-adopt" bindtap="goAdopt">
+    我要领养 Ta
+  </button>
+</view>

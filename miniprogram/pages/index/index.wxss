@@ -1,0 +1,159 @@
+/* pages/index/index.wxss */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 40rpx;
+  padding: 16rpx 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.search-input {
+  flex: 1;
+  margin-left: 16rpx;
+  font-size: 28rpx;
+}
+
+/* 筛选栏 — 一体化分段控件 */
+.filter-bar {
+  display: flex;
+  background: #F0F0F0;
+  border-radius: 16rpx;
+  padding: 4rpx;
+  margin-bottom: 24rpx;
+}
+
+.filter-tag {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  color: #888;
+  transition: all 0.2s;
+}
+
+.filter-tag-active {
+  background: #fff;
+  color: #FF8C42;
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 动物卡片 */
+.animal-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.animal-photo {
+  width: 240rpx;
+  height: 240rpx;
+  flex-shrink: 0;
+}
+
+.animal-info {
+  flex: 1;
+  padding: 20rpx 20rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12rpx;
+}
+
+.animal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.animal-name {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.2;
+}
+
+.animal-meta {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.meta-item {
+  font-size: 24rpx;
+  color: #888;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+}
+
+.meta-dot {
+  font-size: 20rpx;
+  color: #ccc;
+}
+
+.gender-text.male {
+  color: #1976D2;
+}
+
+.gender-text.female {
+  color: #E91E63;
+}
+
+.animal-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* 性格标签 */
+.animal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  margin-top: 10rpx;
+}
+
+.personality-tag {
+  display: inline-block;
+  padding: 2rpx 14rpx;
+  border-radius: 16rpx;
+  font-size: 20rpx;
+  background: #FFF3E0;
+  color: #E65100;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-image {
+  width: 300rpx;
+  height: 300rpx;
+  margin-bottom: 20rpx;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 加载中 */
+.loading {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+  font-size: 26rpx;
+}

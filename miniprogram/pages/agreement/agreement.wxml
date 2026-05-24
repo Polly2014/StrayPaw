@@ -1,0 +1,28 @@
+<!--pages/agreement/agreement.wxml - 用户协议-->
+<view class="container agreement-page">
+  <view class="card section-card">
+    <text class="agreement-title">StrayPaw 用户服务协议</text>
+    <text class="agreement-date">更新日期：2026年5月24日</text>
+
+    <text class="section-title">一、服务说明</text>
+    <text class="section-content">StrayPaw（以下简称"本小程序"）是一个流浪动物救助信息展示与领养申请平台，由志愿者团队运营。本小程序提供的主要服务包括：\n• 展示待领养流浪动物信息\n• 接收用户在线领养申请\n• 为救助团队提供动物信息管理工具</text>
+
+    <text class="section-title">二、用户行为规范</text>
+    <text class="section-content">使用本小程序时，您应当遵守以下规范：\n• 提供真实、准确的个人信息\n• 不得提交虚假领养申请\n• 不得利用本小程序从事任何违法违规活动\n• 不得恶意干扰小程序的正常运行</text>
+
+    <text class="section-title">三、领养须知</text>
+    <text class="section-content">• 领养申请需如实填写个人信息，以便救助团队评估\n• 提交申请不代表领养成功，需经救助团队审核\n• 领养人需年满 18 周岁，具备独立民事行为能力\n• 领养后需善待动物，不得遗弃、虐待或转卖\n• 救助团队保留对领养申请的最终审核权</text>
+
+    <text class="section-title">四、免责声明</text>
+    <text class="section-content">• 本小程序提供的动物信息仅供参考，以实际为准\n• 本小程序不对领养后产生的纠纷承担法律责任\n• 因不可抗力导致服务中断，我们不承担责任\n• 本小程序为公益性质，所有服务均为免费提供</text>
+
+    <text class="section-title">五、知识产权</text>
+    <text class="section-content">本小程序中的所有内容（包括但不限于文字、图片、设计、代码）的知识产权归运营团队所有，未经许可不得复制或使用。</text>
+
+    <text class="section-title">六、协议变更</text>
+    <text class="section-content">我们有权根据需要修改本协议，修改后的协议将在本页面公布。继续使用本小程序即视为同意修改后的协议。</text>
+
+    <text class="section-title">七、联系方式</text>
+    <text class="section-content">如对本协议有任何疑问，请通过"关于我们"页面提供的联系方式与我们取得联系。</text>
+  </view>
+</view>

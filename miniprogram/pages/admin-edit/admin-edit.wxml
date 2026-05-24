@@ -1,0 +1,176 @@
+<!--pages/admin-edit/admin-edit.wxml - 添加/编辑动物-->
+<view class="container">
+  <view class="form-title">{{isEdit ? '编辑动物信息' : '添加新动物'}}</view>
+
+  <!-- 照片上传 -->
+  <view class="card form-section">
+    <text class="section-label">📷 照片</text>
+    <view class="photo-grid">
+      <view class="photo-item" wx:for="{{photos}}" wx:key="*this">
+        <image class="photo-preview" src="{{item}}" mode="aspectFill" />
+        <view class="photo-remove" catchtap="removePhoto" data-index="{{index}}">×</view>
+      </view>
+      <view class="photo-add" bindtap="choosePhoto" wx:if="{{photos.length < 6}}">
+        <text class="photo-add-icon">+</text>
+        <text class="photo-add-text">添加照片</text>
+      </view>
+    </view>
+    <text class="form-hint">第一张将作为封面图，最多6张</text>
+  </view>
+
+  <!-- 基本信息 -->
+  <view class="card form-section">
+    <text class="section-label">📋 基本信息</text>
+
+    <view class="form-item">
+      <text class="form-label">名字 *</text>
+      <input class="form-input" placeholder="动物名字" value="{{form.name}}" bindinput="onInput" data-field="name" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">种类 *</text>
+      <view class="radio-group">
+        <view class="radio-btn {{form.species === 'cat' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="species" data-value="cat">🐱 猫咪</view>
+        <view class="radio-btn {{form.species === 'dog' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="species" data-value="dog">🐶 狗狗</view>
+        <view class="radio-btn {{form.species === 'other' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="species" data-value="other">🐰 其他</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">品种 *</text>
+      <input class="form-input" placeholder="如：中华田园猫、金毛" value="{{form.breed}}" bindinput="onInput" data-field="breed" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">性别 *</text>
+      <view class="radio-group">
+        <view class="radio-btn {{form.gender === 'male' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="gender" data-value="male">♂ 男生</view>
+        <view class="radio-btn {{form.gender === 'female' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="gender" data-value="female">♀ 女生</view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">生日</text>
+      <picker mode="date" value="{{form.birthday}}" bindchange="onDateChange" data-field="birthday">
+        <view class="form-input picker-input">{{form.birthday || '选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">体重</text>
+      <input class="form-input" placeholder="如：4.5kg" value="{{form.weight}}" bindinput="onInput" data-field="weight" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">身高</text>
+      <input class="form-input" placeholder="如：35cm" value="{{form.height}}" bindinput="onInput" data-field="height" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">颈围</text>
+      <input class="form-input" placeholder="如：28cm" value="{{form.neckCirc}}" bindinput="onInput" data-field="neckCirc" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">胸围</text>
+      <input class="form-input" placeholder="如：45cm" value="{{form.chestCirc}}" bindinput="onInput" data-field="chestCirc" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">⚠️ 特殊情况</text>
+      <input class="form-input" placeholder="如：双后腿截肢、单眼失明" value="{{form.specialNote}}" bindinput="onInput" data-field="specialNote" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">状态</text>
+      <view class="radio-group">
+        <view class="radio-btn {{form.status === 'available' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="status" data-value="available">待领养</view>
+        <view class="radio-btn {{form.status === 'pending' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="status" data-value="pending">申请中</view>
+        <view class="radio-btn {{form.status === 'adopted' ? 'radio-active' : ''}}" bindtap="onRadio" data-field="status" data-value="adopted">已领养</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 性格标签 -->
+  <view class="card form-section">
+    <text class="section-label">🏷 性格标签</text>
+    <view class="tag-selector">
+      <view
+        class="tag-option {{form.tags.indexOf(item) > -1 ? 'tag-selected' : ''}}"
+        wx:for="{{tagOptions}}"
+        wx:key="*this"
+        bindtap="toggleTag"
+        data-tag="{{item}}"
+      >{{item}}</view>
+    </view>
+  </view>
+
+  <!-- 医疗信息 -->
+  <view class="card form-section">
+    <text class="section-label">🏥 医疗信息</text>
+
+    <view class="medical-row">
+      <view class="medical-toggle {{form.neutered ? 'toggle-active' : ''}}" bindtap="onToggle" data-field="neutered">
+        <text>绝育</text>
+        <text class="toggle-icon">{{form.neutered ? '✓' : '✗'}}</text>
+      </view>
+      <picker mode="date" value="{{form.neuteredDate}}" bindchange="onDateChange" data-field="neuteredDate" wx:if="{{form.neutered}}">
+        <view class="date-pick">{{form.neuteredDate || '选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="medical-row">
+      <view class="medical-toggle {{form.vaccinated ? 'toggle-active' : ''}}" bindtap="onToggle" data-field="vaccinated">
+        <text>疫苗</text>
+        <text class="toggle-icon">{{form.vaccinated ? '✓' : '✗'}}</text>
+      </view>
+      <picker mode="date" value="{{form.vaccinatedDate}}" bindchange="onDateChange" data-field="vaccinatedDate" wx:if="{{form.vaccinated}}">
+        <view class="date-pick">{{form.vaccinatedDate || '选择日期'}}</view>
+      </picker>
+    </view>
+
+    <view class="medical-row">
+      <view class="medical-toggle {{form.dewormed ? 'toggle-active' : ''}}" bindtap="onToggle" data-field="dewormed">
+        <text>驱虫</text>
+        <text class="toggle-icon">{{form.dewormed ? '✓' : '✗'}}</text>
+      </view>
+      <picker mode="date" value="{{form.dewormedDate}}" bindchange="onDateChange" data-field="dewormedDate" wx:if="{{form.dewormed}}">
+        <view class="date-pick">{{form.dewormedDate || '选择日期'}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <!-- 描述信息 -->
+  <view class="card form-section">
+    <text class="section-label">📝 详细描述</text>
+
+    <view class="form-item">
+      <text class="form-label">简介</text>
+      <textarea class="form-textarea" placeholder="简单介绍这只动物" value="{{form.description}}" bindinput="onInput" data-field="description" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">性格描述</text>
+      <textarea class="form-textarea" placeholder="详细的性格特点" value="{{form.personality}}" bindinput="onInput" data-field="personality" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">健康状况</text>
+      <textarea class="form-textarea" placeholder="健康和医疗情况" value="{{form.healthNote}}" bindinput="onInput" data-field="healthNote" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">救助故事</text>
+      <textarea class="form-textarea" placeholder="救助经过和故事" value="{{form.rescueStory}}" bindinput="onInput" data-field="rescueStory" />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="bottom-spacer"></view>
+</view>
+
+<view class="submit-bar">
+  <button class="btn-primary btn-submit" bindtap="onSubmit" disabled="{{submitting}}">
+    {{submitting ? '保存中...' : (isEdit ? '保存修改' : '添加动物')}}
+  </button>
+</view>

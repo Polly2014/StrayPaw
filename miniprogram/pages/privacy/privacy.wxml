@@ -1,0 +1,32 @@
+<!--pages/privacy/privacy.wxml - 隐私协议-->
+<view class="container agreement-page">
+  <view class="card section-card">
+    <text class="agreement-title">StrayPaw 隐私保护指引</text>
+    <text class="agreement-date">更新日期：2026年5月24日</text>
+
+    <text class="section-title">一、我们收集的信息</text>
+    <text class="section-content">在您使用 StrayPaw（以下简称"本小程序"）时，为实现以下功能，我们会收集您主动提供的个人信息：</text>
+    <text class="section-content bold">1. 领养申请</text>
+    <text class="section-content">当您提交领养申请时，需填写以下信息：姓名、手机号码、微信号（选填）、年龄、居住情况、宠物经验、家人是否同意、领养理由。这些信息用于救助团队评估领养资格，不会用于其他目的。</text>
+    <text class="section-content bold">2. 微信 OpenID</text>
+    <text class="section-content">我们通过微信云开发获取您的 OpenID（匿名标识符），用于识别您的申请记录、防止重复提交。OpenID 不包含您的微信昵称、头像等个人信息。</text>
+
+    <text class="section-title">二、信息的使用</text>
+    <text class="section-content">我们仅将收集的信息用于：\n• 处理您的领养申请，与您联系沟通领养事宜\n• 防止重复或恶意提交\n• 统计领养数据（匿名化处理）</text>
+
+    <text class="section-title">三、信息的存储与保护</text>
+    <text class="section-content">您的信息存储在微信云开发数据库中，受微信平台的安全机制保护。领养申请数据仅管理员可查看，普通用户无法访问他人信息。我们不会将您的信息出售、出租或以其他方式提供给第三方。</text>
+
+    <text class="section-title">四、信息的删除</text>
+    <text class="section-content">如您希望删除已提交的个人信息，可通过"关于我们"页面的联系方式与我们取得联系，我们将在核实身份后 15 个工作日内完成删除。</text>
+
+    <text class="section-title">五、未成年人保护</text>
+    <text class="section-content">本小程序不向未满 18 周岁的未成年人提供领养申请服务。提交领养申请时需填写年龄，未满 18 周岁将无法提交。</text>
+
+    <text class="section-title">六、协议更新</text>
+    <text class="section-content">本隐私保护指引可能适时修订，修订后的内容将在本页面发布。如涉及重大变更，我们将通过小程序内通知提醒您。</text>
+
+    <text class="section-title">七、联系我们</text>
+    <text class="section-content">如对本隐私保护指引有任何疑问，请通过"关于我们"页面提供的联系方式与我们取得联系。</text>
+  </view>
+</view>
