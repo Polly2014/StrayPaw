@@ -13,6 +13,7 @@ miniprogram_npm/
 Thumbs.db
 
 # WeChat DevTools
+project.config.json
 project.private.config.json
 
 # Cloud function dependencies

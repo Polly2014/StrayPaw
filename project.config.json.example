@@ -40,7 +40,7 @@
     "swc": false,
     "disableSWC": true
   },
-  "appid": "wx4ca5f761f628a494",
+  "appid": "",
   "projectname": "StrayPaw",
   "libVersion": "3.7.3",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",

@@ -7,8 +7,8 @@
 ```bash
 # 用微信开发者工具打开此目录
 # 导入项目时选择 X-Workspace/StrayPaw/ 目录
-# AppID: wx4ca5f761f628a494
-# 云环境 ID: cloud1-d2gtyemv5242263c3
+# 首次使用：cp project.config.json.example project.config.json 并填入 AppID
+# 云环境 ID 配置在 miniprogram/app.js 中
 
 # 云函数部署（在微信开发者工具中）
 # 右键 cloudfunctions/getAnimals → 上传并部署
@@ -117,7 +117,7 @@ Mock 数据可预览，核心页面和交互完整。
 
 ### Phase 2: 云开发上线 ✅
 接入真实后端，可以给救助团队用。
-- [x] 开通云开发（env: cloud1-d2gtyemv5242263c3），部署云函数
+- [x] 开通云开发，部署云函数
 - [x] 创建 `animals` / `adoptions` / `admins` 三个 collection
 - [x] 管理后台（动物 CRUD + 照片上传 + 领养审核，openid 鉴权）
 - [x] 管理入口：关于页长按 🐾 → 管理后台
@@ -141,7 +141,7 @@ Mock 数据可预览，核心页面和交互完整。
 - 前端已从 Mock 数据切换到云函数调用
 - 管理后台可通过「关于我们」长按 🐾 进入
 - 管理员鉴权通过 `admins` 集合 openid 白名单
-- 领养申请订阅消息通知（模板 ID: `oj9vcvtZSF4I52v9YWOoHfPQ8CAlM85IFN2rFXv1N04`）
+- 领养申请订阅消息通知（sendNotify 云函数）
 
 发布进度：
 - [x] 小程序信息填写
